@@ -1,10 +1,12 @@
 import { OnInit, Component } from "@angular/core";
 import { Pokemon } from "./pokemon.model";
 import { ExternalImageURLPipe } from "./../pipes/external-image-url.pipe";
+import { PokeCatalogService } from "./poke-catalog.service";
 
 @Component({
   selector: "poke-catalog",
   pipes: [ExternalImageURLPipe],
+  providers: [PokeCatalogService],
   template: `
     <h2>Catalog</h2>
     <div *ngFor="let pokemon of pokemonList">
@@ -15,19 +17,15 @@ import { ExternalImageURLPipe } from "./../pipes/external-image-url.pipe";
 })
 export class PokeCatalogComponent implements OnInit {
 
-  pokemonList: Array<Pokemon> = [
-    {"url": "http:\/\/pokeapi.co\/api\/v2\/pokemon\/1\/", "name": "bulbasaur"},
-    {"url": "http:\/\/pokeapi.co\/api\/v2\/pokemon\/2\/", "name": "ivysaur"},
-    {"url": "http:\/\/pokeapi.co\/api\/v2\/pokemon\/3\/", "name": "venusaur"},
-    {"url": "http:\/\/pokeapi.co\/api\/v2\/pokemon\/4\/", "name": "charmander"},
-    {"url": "http:\/\/pokeapi.co\/api\/v2\/pokemon\/5\/", "name": "charmeleon"},
-  ];
+  pokemonList: Array<Pokemon> = [];
 
-  public constructor() {
+  constructor(private _pokeCatalogService: PokeCatalogService) {
     console.log(">> PokeCatalogComponent()");
   }
 
   public ngOnInit() {
-
+    this._pokeCatalogService.getPokemonList().then((pokemonList: Pokemon[]) => {
+      this.pokemonList = pokemonList;
+    });
   }
 }
