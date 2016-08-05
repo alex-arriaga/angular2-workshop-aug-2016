@@ -7,13 +7,7 @@ import { PokeCatalogService } from "./poke-catalog.service";
   selector: "poke-catalog",
   pipes: [ExternalImageURLPipe],
   providers: [PokeCatalogService],
-  template: `
-    <h2>Catalog</h2>
-    <div *ngFor="let pokemon of pokemonList">
-      {{ pokemon.name }}
-      <img src="{{ pokemon.url | externalImageURL }}" alt="{{ pokemon.name }}">
-    </div>
-`
+  templateUrl: "app/poke-catalog/poke-catalog.component.html"
 })
 export class PokeCatalogComponent implements OnInit {
 
