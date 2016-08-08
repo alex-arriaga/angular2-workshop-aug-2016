@@ -1,3 +1,7 @@
 .caption h3 {
   text-transform: uppercase;
 }
+
+.container {
+  margin-top: 70px;
+}
