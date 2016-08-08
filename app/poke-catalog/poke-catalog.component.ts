@@ -7,7 +7,8 @@ import { PokeCatalogService } from "./poke-catalog.service";
   selector: "poke-catalog",
   pipes: [ExternalImageURLPipe],
   providers: [PokeCatalogService],
-  templateUrl: "app/poke-catalog/poke-catalog.component.html"
+  templateUrl: "app/poke-catalog/poke-catalog.component.html",
+  styleUrls: ["app/poke-catalog/poke-catalog.component.css"]
 })
 export class PokeCatalogComponent implements OnInit {
 
