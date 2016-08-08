@@ -20,9 +20,16 @@ export class PokeNavigationComponent implements OnInit {
 
   }
 
-  search(event: Event) {
+  onClick(event: Event) {
     event.preventDefault();
+    this.notifyToParentComponent();
+  }
 
+  onKeyUp(event: Event) {
+    this.notifyToParentComponent();
+  }
+
+  notifyToParentComponent() {
     console.warn("Value to search in child component:", this.searchValue);
 
     this.searchValueUpdated.emit({
