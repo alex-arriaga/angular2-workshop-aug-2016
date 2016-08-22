@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { SearchValue } from "./search-value.model";
 
 @Component({
   selector: "poke-navigation",
@@ -14,7 +15,7 @@ import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 export class PokeNavigationComponent implements OnInit {
 
   searchValue: string = "";
-  @Output() searchValueUpdated = new EventEmitter();
+  @Output() searchValueUpdated = new EventEmitter<SearchValue>();
 
   constructor() {
 
@@ -33,7 +34,7 @@ export class PokeNavigationComponent implements OnInit {
     console.warn("Value to search in child component:", this.searchValue);
 
     this.searchValueUpdated.emit({
-      valueFromSearchComponent: this.searchValue
+      value: this.searchValue
     });
   }
 

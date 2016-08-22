@@ -1,6 +1,7 @@
 import { Component, EventEmitter } from '@angular/core';
 import { PokeCatalogComponent } from "./poke-catalog/poke-catalog.component";
 import { PokeNavigationComponent } from "./poke-navigation/poke-navigation.component";
+import { SearchValue } from "./poke-navigation/search-value.model";
 
 @Component({
   selector: 'my-app',
@@ -12,9 +13,9 @@ import { PokeNavigationComponent } from "./poke-navigation/poke-navigation.compo
 export class AppComponent {
   parentSearchValue: string = "";
 
-  searchValueUpdated(event: EventEmitter<any>) {
-    console.log("Value received in parent component:", event.valueFromSearchComponent);
-    this.parentSearchValue = event.valueFromSearchComponent;
+  searchValueUpdated(event: SearchValue) {
+    console.log("Value received in parent component:", event.value);
+    this.parentSearchValue = event.value;
   }
 
 }
